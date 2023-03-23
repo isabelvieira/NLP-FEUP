@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix,accuracy_score
 
 ps = PorterStemmer()
 stopwords = set(stopwords.words('english'))
@@ -60,7 +60,9 @@ clf = LogisticRegression(penalty='l2') # l2 regularization is the default
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 
-print("Logistic reqression's confusion matrix",confusion_matrix(y_test, y_pred)) #it's confusion matrix
+
+print("Logistic reqression's confusion matrix :\n",confusion_matrix(y_test,y_pred)) #it's confusion matrix
+print("accuracy score :\t",accuracy_score(y_test,y_pred))
 
 
         #the SVC
@@ -69,4 +71,5 @@ clf = LinearSVC(penalty='l2') # l2 regularization is the default
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 
-print("SVC's confsion matrix : ",confusion_matrix(y_test, y_pred)) #it's confusion matrix
+print("SVC's confsion matrix :\n",confusion_matrix(y_test, y_pred)) #it's confusion matrix
+print("accuracy score :\t",accuracy_score(y_test,y_pred))
